@@ -32,3 +32,15 @@ export const validateLoginData = (req) => {
     }
 
 };
+
+export const validateEditProfileData = (req) => {
+    const newData = req.body;
+    
+    const ALLOWED_UPDATES = ["photoUrl", "about", "gender", "skills"];
+    
+    const isUpdateAllowed = Object.keys(newData).every((k) => ALLOWED_UPDATES.includes(k));
+            
+    if(!isUpdateAllowed) {
+        throw new Error("Update not allowed");
+    }
+};

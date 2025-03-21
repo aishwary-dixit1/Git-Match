@@ -8,6 +8,7 @@ import { userAuth } from "./middlewares/auth.js";
 import { authRouter } from "./routes/auth.router.js";
 import { profileRouter } from "./routes/profile.router.js";
 import { userRouter } from "./routes/user.router.js";
+import { requestRouter } from "./routes/connectionRequest.router.js";
 
 dotenv.config(); 
 
@@ -23,6 +24,8 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 
 app.use("/", userRouter);
+
+app.use("/", requestRouter);
 
 app.get("/user", async (req, res) => {
 	try {

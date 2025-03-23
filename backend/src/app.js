@@ -9,6 +9,7 @@ import { authRouter } from "./routes/auth.router.js";
 import { profileRouter } from "./routes/profile.router.js";
 import { userRouter } from "./routes/user.router.js";
 import { requestRouter } from "./routes/connectionRequest.router.js";
+import cors from "cors";
 
 dotenv.config(); 
 
@@ -16,6 +17,10 @@ const PORT = process.env.PORT;
 
 const app = express(); 
 
+app.use(cors({
+	origin: "http://localhost:5173",
+	credentials: true,
+}));
 app.use(express.json());
 app.use(cookieParser());
 
